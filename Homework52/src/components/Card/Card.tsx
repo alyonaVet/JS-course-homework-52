@@ -5,7 +5,7 @@ interface Props {
   suit: string;
 }
 
-const Card: React.FC<Props> = ({rank, suit}) => {
+const CardType: React.FC<Props> = ({rank, suit}) => {
   const suitMapping: Record<string, string> = {diams: '♦', hearts: '♥', clubs: '♣', spades: '♠'};
   const cardClasses: string = `card rank-${rank.toLowerCase()} ${suit}`
   return (
@@ -16,4 +16,4 @@ const Card: React.FC<Props> = ({rank, suit}) => {
   );
 };
 
-export default Card;
+export default CardType;
