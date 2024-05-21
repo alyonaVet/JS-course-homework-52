@@ -1,30 +1,35 @@
 import './App.css';
-import Card from './components/Card/Card.tsx';
+import CardType from './components/Card/Card.tsx';
+import {Card} from './lib/Card.ts';
 
-function App() {
-  const rank: string[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-  const suit: string[] = ['diams', 'hearts', 'clubs', 'spades'];
+import {CardDeck} from './lib/CardDeck.ts';
+import {useState} from 'react';
 
-  const getCards = (arr1: string[], arr2: string[]) => {
-    const card: [string, string][] = [];
-    for (const el1 of arr1) {
-      for (const el2 of arr2) {
-        card.push([el1, el2]);
-      }
+const App = () => {
+  const [cards, setCards] = useState<Card[]>([]);
+  const [cardDeck, setCardDeck] = useState(new CardDeck());
+
+  const getCards = () => {
+    if (cardDeck.cardsCount() >= 5) {
+      const drawnCards = cardDeck.getCards(5);
+      setCards(drawnCards);
+      setCardDeck(cardDeck);
     }
-
-    return card;
   };
-
-  const cards = getCards(rank, suit);
 
   return (
     <>
-        {cards.map((card, index) => {
-          return <Card key={index} rank={card[0]} suit={card[1]}/>;
-        })}
+      <div className="playingCards faceImages">
+        <div>Card count: {cardDeck.cardsLeft()}</div>
+        <button onClick={getCards}>Get 5 cards</button>
+        <div>
+          {cards.map((card, index) => (
+            <CardType key={index} rank={card.rank} suit={card.suit}/>
+          ))}
+        </div>
+      </div>
     </>
   );
-}
+};
 
 export default App;
