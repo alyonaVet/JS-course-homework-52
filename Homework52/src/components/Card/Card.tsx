@@ -1,13 +1,11 @@
 import React from 'react';
-
 interface Props {
   rank: string;
   suit: string;
 }
-
 const CardType: React.FC<Props> = ({rank, suit}) => {
   const suitMapping: Record<string, string> = {diams: '♦', hearts: '♥', clubs: '♣', spades: '♠'};
-  const cardClasses: string = `card rank-${rank.toLowerCase()} ${suit}`
+  const cardClasses: string = `card rank-${rank.toLowerCase()} ${suit}`;
   return (
     <span className={cardClasses}>
       <span className="rank">{rank}</span>
