@@ -5,3 +5,22 @@
   text-align: center;
 }
 
+.cardsNumber {
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  margin-bottom: 15px;
+}
+
+.resetCards {
+  margin-left: 15px;
+}
+
+.result {
+  margin-bottom: 15px;
+}
